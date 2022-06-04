@@ -1,0 +1,22 @@
+{
+  "name": "check-n-mate",
+  "version": "1.0.0",
+  "description": "A social media platform to find the pair programming mates.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npm run watch --prefix server",
+    "client": "cd client && npm start",
+    "start": "npm run server & npm run client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vaib215/Check-N-Mate.git"
+  },
+  "author": "@masterpranay1, @vaib215",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vaib215/Check-N-Mate/issues"
+  },
+  "homepage": "https://github.com/Vaib215/Check-N-Mate#readme"
+}
