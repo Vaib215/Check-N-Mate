@@ -1,10 +1,11 @@
 import { FaBell } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 const Header = () => {
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 shadow-md">
             {/* Add logo Here */}
             <div className="flex-1">
-                <div className="btn bg-white text-black border-white border-2 hover:border-red-400 hover:bg-white normal-case text-xl">Check N Mate</div>
+                <Link to='/' className="btn bg-white text-black border-white border-2 hover:border-red-400 hover:bg-white normal-case text-xl">Check N Mate</Link>
             </div>
             <div className="flex-none gap-2">
                 {/* Notifications */}
@@ -20,7 +21,9 @@ const Header = () => {
                         </div>
                     </label>
                     <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-36">
-                        <li className='p-2 cursor-pointer rounded-xl bg-white text-black border-white border-2 hover:border-purple-400 hover:bg-white'>Profile</li>
+                        <li className=''>
+                            <Link to='/profile/Vaib326' className='p-2 cursor-pointer rounded-xl bg-white text-lg text-black border-white border-2 hover:border-purple-400 hover:bg-white'>Profile</Link>
+                        </li>
                         <li className='p-2 cursor-pointer rounded-xl bg-white text-black border-white border-2 hover:border-yellow-400 hover:bg-white'>Settings</li>
                         <li className='p-2 cursor-pointer rounded-xl bg-white text-black border-white border-2 hover:border-accent hover:bg-white'>Logout</li>
                     </ul>
@@ -28,8 +31,8 @@ const Header = () => {
 
                 {/* Login & Signup Buttons */}
                 <div className="buttons flex gap-2">
-                <button className="btn btn-outline btn-warning outline-none font-bold">Signup</button>
-                <button className="btn btn-outline btn-secondary outline-none font-bold">Login</button>
+                    <Link to='auth/signup' className="btn btn-outline btn-warning outline-none font-bold">Signup</Link>
+                    <Link to='auth/signin' className="btn btn-outline btn-secondary outline-none font-bold">Login</Link>
                 </div>
             </div>
 

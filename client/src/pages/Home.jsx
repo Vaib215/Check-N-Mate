@@ -1,8 +1,10 @@
-import Signup from '../components/layout/Signup'
+import Hero from '../components/layout/Hero'
+import Process from '../components/layout/Process'
 const Home = () => {
   return (
     <div>
-        <Signup/>
+       <Hero/>
+       <Process/>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { AiFillGoogleCircle } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 function Signup() {
     return (
         <>
@@ -10,10 +11,19 @@ function Signup() {
                         <p className="py-6">Start your learning journey by filling in your information to create a new account.</p>
                         <strong>Already have an account?</strong>
                         <br />
-                        <a href="/auth/signin" className="my-4 px-8 btn btn-outline text-primary rounded-full">Sign In</a>
+                        <Link to="/auth/signin" className="my-4 px-8 btn btn-outline text-primary rounded-full">Sign In</Link>
                     </div>
-                    <div className="card flex-shrink-0 p-4 lg:px-8 lg:w-[60%] bg-accent bg-opacity-30 rounded-none lg:rounded-r-xl">
+                    <div className="card flex-shrink-0 lg:px-6 lg:w-[60%] bg-accent bg-opacity-30 rounded-none lg:rounded-r-xl">
                         <div className="card-body">
+                            {/* Breadcrumbs */}
+                            <div className="flex justify-end">
+                                <div className="text-sm breadcrumbs">
+                                    <ul>
+                                        <li><Link to='/'>Home</Link></li>
+                                        <li><a>Signup</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                             <h1 className="text-center text-3xl text-accent-content font-semibold">Sign Up to your Account</h1>
                             <div className="flex items-center justify-center -mt-2">
                                 <div class="divider bg-accent-content rounded-full h-2 w-16 mb-2" />
@@ -38,7 +48,7 @@ function Signup() {
                                 <button className="px-8 btn btn-outline text-primary text-xl w-fit rounded-full focus:outline-none">Sign Up</button>
                             </div>
                             <div className="text-primary text-center mt-4 lg:hidden">
-                                <p>Already have an account?<strong> <br /><a href="/auth/signin" className="cursor-pointer">Sign In Instead</a></strong></p>
+                                <p>Already have an account?<strong> <br /><Link to="/auth/signin" className="cursor-pointer">Sign In Instead</Link></strong></p>
                             </div>
                         </div>
                     </div>

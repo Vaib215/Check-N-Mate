@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PostPreview from '../components/layout/PostPreview'
 
 const Posts = () => {
@@ -7,7 +8,7 @@ const Posts = () => {
             {/* Breadcrumbs */}
             <div className="text-sm breadcrumbs mx-2 mb-4">
                 <ul>
-                    <li><a>Home</a></li>
+                    <li><Link to='/'>Home</Link></li>
                     <li><a>Checks</a></li>
                 </ul>
             </div>
