@@ -1,7 +1,41 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import axios from 'axios'
 import { AiFillGoogleCircle } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 function Signup() {
+    const inputName = useRef(null)
+    const inputEmail = useRef(null)
+    const inputPassword = useRef(null)
+    const inputUsername = useRef(null)
+    const inputCollege = useRef(null)
+    const inputSkills = useRef(null)
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        let skill = inputSkills.current.value.split(',')
+        var postData = {
+            name: inputName.current.value,
+            email: inputEmail.current.value,
+            password: inputPassword.current.value,
+            username: inputUsername.current.value,
+            college: inputCollege.current.value,
+            skills: skill,
+            rating: 0
+        };
+        let axiosConfig = {
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                "Access-Control-Allow-Origin": "*",
+            }
+          };
+        axios.post('https://vaib215-check-n-mate-7v5qv6jwv2pj4r-8000.githubpreview.dev/user', postData,axiosConfig)
+            .then((res) => {
+                console.log("RESPONSE RECEIVED: ", res);
+            })
+            .catch((err) => {
+                console.log("AXIOS ERROR: ", err);
+            })
+
+    }
     return (
         <>
             <div className="mx-auto lg:mx-32 lg:my-8 min-h-1/2 bg-base-100 border-2 border-blue-400 lg:rounded-xl ">
@@ -26,27 +60,23 @@ function Signup() {
                             </div>
                             <h1 className="text-center text-3xl text-accent-content font-semibold">Sign Up to your Account</h1>
                             <div className="flex items-center justify-center -mt-2">
-                                <div class="divider bg-accent-content rounded-full h-2 w-16 mb-2" />
+                                <div className="divider bg-accent-content rounded-full h-2 w-16 mb-2" />
                             </div>
                             <div className="flex flex-col text-primary gap-2 items-center justify-center mb-4">
                                 <AiFillGoogleCircle size="48" />
                                 <p>or use your own email account</p>
                             </div>
-                            <div className="form-control gap-8">
-                                <input type="text" placeholder="Enter your name" className="input input-primary focus:outline-none text-lg" />
-                                <input type="email" placeholder="Enter a valid Email Address" className="input input-primary focus:outline-none text-lg" />
-                                <input type="password" placeholder="Create a strong password" className="input input-primary focus:outline-none text-lg" />
-                                <input type="password" placeholder="Re-enter your password" className="input input-primary focus:outline-none text-lg" />
-                                <label className="label">
-                                    <label className="label cursor-pointer gap-2">
-                                        <input type="checkbox" className="checkbox checkbox-primary focus:outline-none" />
-                                        <span className="label-text">Remember me</span>
-                                    </label>
-                                </label>
-                            </div>
+                            <form className="form-control gap-8">
+                                <input ref={inputName} type="text" placeholder="Enter your name" className="input input-primary focus:outline-none text-lg" />
+                                <input ref={inputEmail} type="email" placeholder="Enter a valid Email Address" className="input input-primary focus:outline-none text-lg" />
+                                <input ref={inputCollege} type="text" placeholder="Enter your college name" className="input input-primary focus:outline-none text-lg" />
+                                <input ref={inputUsername} type="text" placeholder="Create a username" className="input input-primary focus:outline-none text-lg" />
+                                <input ref={inputSkills} type="text" placeholder="Enter your skills (seperated by comma ',')" className="input input-primary focus:outline-none text-lg" />
+                                <input ref={inputPassword} type="password" placeholder="Create a strong password" className="input input-primary focus:outline-none text-lg" />
                             <div className="form-control mt-6 flex items-center">
-                                <button className="px-8 btn btn-outline text-primary text-xl w-fit rounded-full focus:outline-none">Sign Up</button>
+                                <button className="px-8 btn btn-outline text-primary text-xl w-fit rounded-full focus:outline-none" onClick={handleSubmit}>Sign Up</button>
                             </div>
+                            </form>
                             <div className="text-primary text-center mt-4 lg:hidden">
                                 <p>Already have an account?<strong> <br /><Link to="/auth/signin" className="cursor-pointer">Sign In Instead</Link></strong></p>
                             </div>
